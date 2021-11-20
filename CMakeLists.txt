@@ -8,7 +8,7 @@ set(PROJECT_SOURCE_DIR ${PROJECT_DIR}/src)
 set(glfw3_DIR ${DEPENDENCIES_DIR}/GLFW/lib/cmake/glfw3)
 find_package(glfw3 3.2 REQUIRED)
 set(PROJECT_SOURCES ${PROJECT_SOURCE_DIR}/main.cpp
-
+                    ${DEPENDENCIES_DIR}/GLAD/glad.c
    )
 
 include_directories(${PROJECT_INCLUDE_DIR} ${DEPENDENCIES_DIR})

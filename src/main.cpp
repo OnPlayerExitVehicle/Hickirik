@@ -2,10 +2,23 @@
 #include <cassert>
 #include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
+#include "ShaderProgram.hpp"
 
 
 #define WINDOW_WIDTH    800
 #define WINDOW_HEIGHT   600
+
+void OGL_Start()
+{
+    glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+    Hickirik::Shaders::ShaderProgram sp;
+    sp.AttachShader("./shaders/vertex.glsl", GL_VERTEX_SHADER);
+}
+
+void OGL_Frame()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+}
 
 int main()
 {
@@ -16,12 +29,12 @@ int main()
     glfwMakeContextCurrent(window);
     assert(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
 
-    glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+    OGL_Start();
 
     while(!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
-        glClear(GL_COLOR_BUFFER_BIT);
+        OGL_Frame();
         glfwSwapBuffers(window);
     }
 

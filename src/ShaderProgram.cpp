@@ -23,12 +23,13 @@ void ShaderProgram::AttachShader(const std::string& address, uint type)
         file.close();
 
     int id = glCreateShader(type);
+    m_shaderIds[m_shaderCount++] = id;
+
     const char* cstrShader = &strShader[0];
     glShaderSource(id, 1, &cstrShader, 0);
-
     int compileStatus;
     glGetShaderiv(id, GL_COMPILE_STATUS, &id);
-    assert(id);
+    assert(compileStatus);
 
-    m_shaderIds[m_shaderCount++] = id;
+    
 }

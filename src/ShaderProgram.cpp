@@ -27,9 +27,20 @@ void ShaderProgram::AttachShader(const std::string& address, uint type)
 
     const char* cstrShader = &strShader[0];
     glShaderSource(id, 1, &cstrShader, 0);
+    glCompileShader(id);
     int compileStatus;
-    glGetShaderiv(id, GL_COMPILE_STATUS, &id);
+    glGetShaderiv(id, GL_COMPILE_STATUS, &compileStatus);
     assert(compileStatus);
+    std::cout << compileStatus << std::endl;
+    glAttachShader(m_id, id);
+}
 
-    
+void ShaderProgram::Link()
+{
+    glLinkProgram(m_id);
+}
+
+void ShaderProgram::Use()
+{
+    glUseProgram(m_id);
 }

@@ -18,6 +18,8 @@ namespace Hickirik
         public:
             ShaderProgram();
             void AttachShader(const std::string& address, uint type);
+            void Link();
+            void Use();
         };
     }
 }

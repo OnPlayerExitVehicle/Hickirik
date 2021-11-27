@@ -38,9 +38,15 @@ void ShaderProgram::AttachShader(const std::string& address, uint type)
 void ShaderProgram::Link()
 {
     glLinkProgram(m_id);
+    m_transformMatrixId = glGetUniformLocation(m_id, matrixName.c_str());
 }
 
 void ShaderProgram::Use()
 {
     glUseProgram(m_id);
+}
+
+void ShaderProgram::SendTransformMatrix(const glm::mat3& matrix)
+{
+    glUniformMatrix3fv(m_transformMatrixId, 1, false, &matrix[0][0]);
 }

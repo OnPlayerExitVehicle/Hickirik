@@ -7,9 +7,16 @@ set(PROJECT_INCLUDE_DIR ${PROJECT_DIR}/include)
 set(PROJECT_SOURCE_DIR ${PROJECT_DIR}/src)
 set(glfw3_DIR ${DEPENDENCIES_DIR}/GLFW/lib/cmake/glfw3)
 find_package(glfw3 3.2 REQUIRED)
+set(IMGUI_DIR ${DEPENDENCIES_DIR}/IMGUI)
+file(GLOB IMGUI_SOURCEFILES ${IMGUI_DIR}/*.cpp)
+add_definitions(-DIMGUI_IMPL_OPENGL_LOADER_GLAD)
 set(PROJECT_SOURCES ${PROJECT_SOURCE_DIR}/main.cpp
                     ${DEPENDENCIES_DIR}/GLAD/glad.c
                     ${PROJECT_SOURCE_DIR}/ShaderProgram.cpp
+                    ${PROJECT_SOURCE_DIR}/Object2D.cpp
+                    ${PROJECT_SOURCE_DIR}/ObjectManager2D.cpp
+                    ${PROJECT_SOURCE_DIR}/GUI.cpp
+                    ${IMGUI_SOURCEFILES}
    )
 
 include_directories(${PROJECT_INCLUDE_DIR} ${DEPENDENCIES_DIR})

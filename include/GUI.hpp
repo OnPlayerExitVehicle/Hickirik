@@ -14,6 +14,6 @@ public:
     void Init(GLFWwindow* window);
     void Frame();
     bool Creator(ObjectType2D& type);
-    void FrameItems(float* posX, float* posY, float* rot, float* scaleX, float* scaleY);
+    void FrameItems(glm::vec2* pos, float* rot, glm::vec2* scale);
     void Draw();
 };

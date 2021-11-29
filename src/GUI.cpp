@@ -34,14 +34,12 @@ bool GUI::Creator(ObjectType2D& type)
     return isClicked;
 }
 
-void GUI::FrameItems(float* posX, float* posY, float* rot, float* scaleX, float* scaleY)
+void GUI::FrameItems(glm::vec2* pos, float* rot, glm::vec2* scale)
 {
     ImGui::Begin("Object Controls");
-    ImGui::SliderFloat("Position X", posX, -1.0f, 1.0f, NULL);
-    ImGui::SliderFloat("Position Y", posY, -1.0f, 1.0f, NULL);
+    ImGui::SliderFloat2("Position", (float*)pos, -1.0f, 1.0f, NULL);
     ImGui::SliderFloat("Rotation", rot, 0.0f, 360.0f, NULL);
-    ImGui::SliderFloat("Scale X", scaleX, 0.0f, 1.0f, NULL);
-    ImGui::SliderFloat("Scale Y", scaleY, 0.0f, 1.0f, NULL);
+    ImGui::SliderFloat2("Scale", (float*)scale, 0.0f, 1.0f, NULL);
     ImGui::End();
 }
 

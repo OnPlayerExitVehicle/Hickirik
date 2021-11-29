@@ -5,7 +5,7 @@ Object2D::Object2D(ObjectType2D type, Hickirik::Shaders::ShaderProgram* program)
 {
     position        = glm::vec2(0.0f, 0.0f);
     scale           = glm::vec2(1.0f, 1.0f);
-    rotation        = 45.0f;
+    rotation        = 0.0f;
     transformMatrix = glm::mat3(1);
 
     glClearColor(0.3f, 0.3f, 0.3f, 1.0f);

@@ -71,7 +71,7 @@ void OGL_Frame()
     }
     else{
         object->Draw();
-        gui->FrameItems(&object->position.x, &object->position.y, &object->rotation, &object->scale.x, &object->scale.y);
+        gui->FrameItems(&object->position, &object->rotation, &object->scale);
     }
     
     gui->Draw();

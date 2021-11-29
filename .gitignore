@@ -49,3 +49,7 @@ _deps
 .history/
 
 .build/*
+
+# IMGUI
+
+imgui.ini

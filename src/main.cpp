@@ -33,25 +33,7 @@ glm::vec3 triangleVertices[6]{
 
 void OGL_Start()
 {
-    /*
-    uint vertexBuffer;
-    shaderProgram = new Hickirik::Shaders::ShaderProgram();
-    shaderProgram->AttachShader("./shaders/vertex.glsl", GL_VERTEX_SHADER);
-    shaderProgram->AttachShader("./shaders/fragment.glsl", GL_FRAGMENT_SHADER);
-    shaderProgram->Link();
-    glGenVertexArrays(1, &vertexArrayObject);
-    glBindVertexArray(vertexArrayObject);
-    glGenBuffers(1, &vertexBuffer);
-    
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(triangleVertices), triangleVertices, GL_STATIC_DRAW);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, NULL);
-    glEnableVertexAttribArray(0);
-    */
     srand(time(NULL));
-    
-    //object = new Object2D(ObjectType2D::Square);
     gui = new GUI();
 }
 
@@ -83,7 +65,6 @@ void error(int code, const char* error)
 
 int main()
 {
-    //assert(glfwInit());
     glfwInit();
     glfwSetErrorCallback(&error);
     GLFWwindow* window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "asd", NULL, NULL);
@@ -92,10 +73,9 @@ int main()
         std::cout << "err" << std::endl;
     }
     
-    //assert(window);
     glfwMakeContextCurrent(window);
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-    //assert();
+
     gui->Init(window);
     OGL_Start();
 

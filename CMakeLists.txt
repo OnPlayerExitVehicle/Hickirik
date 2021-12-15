@@ -16,6 +16,7 @@ set(PROJECT_SOURCES ${PROJECT_SOURCE_DIR}/main.cpp
                     ${PROJECT_SOURCE_DIR}/Object2D.cpp
                     ${PROJECT_SOURCE_DIR}/ObjectManager2D.cpp
                     ${PROJECT_SOURCE_DIR}/GUI.cpp
+                    ${PROJECT_SOURCE_DIR}/VertexArray.cpp
                     ${IMGUI_SOURCEFILES}
    )
 

@@ -29,6 +29,11 @@ bool GUI::Creator(ObjectType2D& type)
         type = ObjectType2D::Hexagon;
         isClicked = true;
     }
+    else if(ImGui::Button("Triangle"))
+    {
+        type = ObjectType2D::Triangle;
+        isClicked = true;
+    }
 
     ImGui::End();
     return isClicked;

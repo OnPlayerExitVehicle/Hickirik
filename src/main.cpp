@@ -63,9 +63,7 @@ void OGL_Frame()
     {
         Object2D::ClearScreen();
         ObjectType2D type;
-        if(gui->Creator(type))
-        {
-            std::cout << "asd" << std::endl;
+        if(gui->Creator(type)){
             object = new Object2D(type);
         }
     }

@@ -31,7 +31,6 @@ void ShaderProgram::AttachShader(const std::string& address, uint type)
     int compileStatus;
     glGetShaderiv(id, GL_COMPILE_STATUS, &compileStatus);
     assert(compileStatus);
-    std::cout << compileStatus << std::endl;
     glAttachShader(m_id, id);
 }
 

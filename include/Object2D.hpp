@@ -31,6 +31,7 @@ private:
 
     void createHexagon();
     void createSquare();
+    void createTriangle();
 public:
     static void ClearScreen();
     glm::vec2 position;

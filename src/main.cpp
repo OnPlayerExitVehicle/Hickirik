@@ -18,8 +18,12 @@
 Hickirik::Shaders::ShaderProgram* shaderProgram;
 
 int triangleCount;
-
+/*
 Object2D* object = nullptr;
+Object2D* object2 = nullptr;
+*/
+std::vector<Object2D*> objects;
+
 GUI* gui;
 
 glm::vec3 triangleVertices[6]{
@@ -35,15 +39,27 @@ void OGL_Start()
 {
     srand(time(NULL));
     gui = new GUI();
+    //objects.push_back(new Object2D(ObjectType2D::Triangle));
 }
 
 void OGL_Frame()
 {
+    Object2D::ClearScreen();
     gui->Frame();
+    ObjectType2D type;
+    if(gui->Creator(type))
+    {
+        objects.push_back(new Object2D(type));
+    }
+    for(int i = 0; i < objects.size(); i++)
+    {
+        objects[i]->Draw();
+        gui->FrameItems(&objects[i]->position, &objects[i]->rotation, &objects[i]->scale, i);
+    }
     
+    /*
     if(object == nullptr)
     {
-        Object2D::ClearScreen();
         ObjectType2D type;
         if(gui->Creator(type)){
             object = new Object2D(type);
@@ -53,8 +69,10 @@ void OGL_Frame()
         object->Draw();
         gui->FrameItems(&object->position, &object->rotation, &object->scale);
     }
+    */
     
     gui->Draw();
+    
 }
 
 void error(int code, const char* error)

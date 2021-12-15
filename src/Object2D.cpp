@@ -43,7 +43,7 @@ void Object2D::Draw()
     glm::mat3 scalingMatrix = glm::scale(glm::mat3(1), scale);
     transformMatrix = translationMatrix * rotationMatrix * scalingMatrix;
 
-    glClear(GL_COLOR_BUFFER_BIT);
+    //glClear(GL_COLOR_BUFFER_BIT);
     program->Use();
     glBindVertexArray(vao);
 

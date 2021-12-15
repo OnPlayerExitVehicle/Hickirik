@@ -1,4 +1,5 @@
 #include "GUI.hpp"
+#include <sstream>
 
 void GUI::Init(GLFWwindow* window)
 {
@@ -39,9 +40,12 @@ bool GUI::Creator(ObjectType2D& type)
     return isClicked;
 }
 
-void GUI::FrameItems(glm::vec2* pos, float* rot, glm::vec2* scale)
+void GUI::FrameItems(glm::vec2* pos, float* rot, glm::vec2* scale, int number)
 {
-    ImGui::Begin("Object Controls");
+    // refactor 
+    std::stringstream ss;
+    ss << "Object " << number << " Controls";
+    ImGui::Begin(ss.str().c_str(), 0, ImGuiCond_Once);
     ImGui::SliderFloat2("Position", (float*)pos, -1.0f, 1.0f, NULL);
     ImGui::SliderFloat("Rotation", rot, 0.0f, 360.0f, NULL);
     ImGui::SliderFloat2("Scale", (float*)scale, 0.0f, 1.0f, NULL);

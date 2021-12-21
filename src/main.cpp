@@ -11,39 +11,33 @@
 #include <vector>
 #include "Object2D.hpp"
 #include "GUI.hpp"
+#include "ObjectManager2D.hpp"
 
 #define WINDOW_WIDTH    800
 #define WINDOW_HEIGHT   800
 
-Hickirik::Shaders::ShaderProgram* shaderProgram;
 
 int triangleCount;
+GLFWwindow* window;
 /*
 Object2D* object = nullptr;
 Object2D* object2 = nullptr;
 */
-std::vector<Object2D*> objects;
+//std::vector<Object2D*> objects;
 
-GUI* gui;
-
-glm::vec3 triangleVertices[6]{
-    glm::vec3(-1.0f,  1.0f, 0.0f), 
-    glm::vec3( 0.0f,  1.0f, 0.0f), 
-    glm::vec3(-1.0f,  0.0f, 0.0f),
-    glm::vec3( 0.0f,  1.0f, 0.0f), 
-    glm::vec3( 0.0f,  0.0f, 0.0f), 
-    glm::vec3(-1.0f,  0.0f, 0.0f)
-};
+//GUI* gui;
 
 void OGL_Start()
 {
     srand(time(NULL));
-    gui = new GUI();
+    //gui = new GUI();
     //objects.push_back(new Object2D(ObjectType2D::Triangle));
+    ObjectManager2D::Start(new Hickirik::Shaders::ShaderProgram(), window);
 }
 
 void OGL_Frame()
 {
+    /*
     Object2D::ClearScreen();
     gui->Frame();
     ObjectType2D type;
@@ -69,10 +63,11 @@ void OGL_Frame()
         object->Draw();
         gui->FrameItems(&object->position, &object->rotation, &object->scale);
     }
-    */
+    
     
     gui->Draw();
-    
+    */
+   ObjectManager2D::Frame();
 }
 
 void error(int code, const char* error)
@@ -85,7 +80,7 @@ int main()
 {
     glfwInit();
     glfwSetErrorCallback(&error);
-    GLFWwindow* window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "asd", NULL, NULL);
+    window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "asd", NULL, NULL);
     if(window == nullptr)
     {
         std::cout << "err" << std::endl;
@@ -94,7 +89,6 @@ int main()
     glfwMakeContextCurrent(window);
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 
-    gui->Init(window);
     OGL_Start();
 
     while(!glfwWindowShouldClose(window))

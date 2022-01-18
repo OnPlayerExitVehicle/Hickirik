@@ -24,6 +24,7 @@ namespace Hickirik
             void Link();
             void Use();
             void SendTransformMatrix(const glm::mat3& matrix);
+            void SendTransformMatrix(const glm::mat4& matrix);
         };
     }
 }

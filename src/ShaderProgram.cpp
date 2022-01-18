@@ -49,3 +49,8 @@ void ShaderProgram::SendTransformMatrix(const glm::mat3& matrix)
 {
     glUniformMatrix3fv(m_transformMatrixId, 1, false, &matrix[0][0]);
 }
+
+void ShaderProgram::SendTransformMatrix(const glm::mat4& matrix)
+{
+    glUniformMatrix4fv(m_transformMatrixId, 1, false, &matrix[0][0]);
+}

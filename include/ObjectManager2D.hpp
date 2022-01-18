@@ -14,6 +14,7 @@ class ObjectManager2D
 
 private:
     static std::vector<Object2D> objectList;
+    static Object2D* activeObject;
     static GUI* gui;
     static void DrawObjects();
     static void DrawObjectCreator();

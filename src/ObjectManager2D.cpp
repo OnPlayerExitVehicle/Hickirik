@@ -5,14 +5,15 @@
 std::vector<Object2D> ObjectManager2D::objectList;
 GUI* ObjectManager2D::gui;
 Hickirik::Shaders::ShaderProgram* ObjectManager2D::shaderProgram;
+Object2D* ObjectManager2D::activeObject = nullptr;
 
 void ObjectManager2D::Start(Hickirik::Shaders::ShaderProgram* program, GLFWwindow* window)
 {
     gui = new GUI();
     gui->Init(window);
     shaderProgram = program;
-    shaderProgram->AttachShader("./shaders/vertex.glsl", GL_VERTEX_SHADER);
-    shaderProgram->AttachShader("./shaders/fragment.glsl", GL_FRAGMENT_SHADER);
+    shaderProgram->AttachShader("./shaders/2D/vertex.glsl", GL_VERTEX_SHADER);
+    shaderProgram->AttachShader("./shaders/2D/fragment.glsl", GL_FRAGMENT_SHADER);
     shaderProgram->Link();
 }
 
@@ -43,16 +44,16 @@ void ObjectManager2D::DrawObjectCreator()
     {
         VertexArray* vao = ObjectCreator2D::CreateObject(type);
         objectList.push_back(Object2D(vao, shaderProgram));
+        activeObject = &objectList.back();
     }
 }
 
 void ObjectManager2D::DrawObjectProps()
 {
     // refactor
-    if(objectList.size() > 0)
+    if(activeObject)
     {
         // refactor
-        int index = objectList.size() - 1;
-        gui->FrameItems(&objectList[0].position, &objectList[0].rotation, &objectList[0].scale);
+        gui->FrameItems(&activeObject->position, &activeObject->rotation, &activeObject->scale);
     }
 }

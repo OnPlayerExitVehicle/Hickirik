@@ -12,11 +12,11 @@ Object2D::Object2D(VertexArray* vao, Hickirik::Shaders::ShaderProgram* program)
     this->vao = vao;
 
     glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
-    if(!program)
+    if(!program) // control and delete this
     {
         this->program = new Hickirik::Shaders::ShaderProgram();
-        this->program->AttachShader("./shaders/vertex.glsl", GL_VERTEX_SHADER);
-        this->program->AttachShader("./shaders/fragment.glsl", GL_FRAGMENT_SHADER);
+        this->program->AttachShader("./shaders/2D/vertex.glsl", GL_VERTEX_SHADER);
+        this->program->AttachShader("./shaders/2D/fragment.glsl", GL_FRAGMENT_SHADER);
         this->program->Link();
     }
     else this->program = program;

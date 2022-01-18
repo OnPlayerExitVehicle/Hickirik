@@ -1,4 +1,6 @@
 #include "ObjectManager2D.hpp"
+#include "ObjectCreator2D.hpp"
+#include <iostream>
 
 std::vector<Object2D> ObjectManager2D::objectList;
 GUI* ObjectManager2D::gui;
@@ -18,9 +20,9 @@ void ObjectManager2D::Frame()
 {
     // refactor
     gui->Frame();
-    DrawObjects();
     DrawObjectCreator();
     DrawObjectProps();
+    DrawObjects();
     // refactor
     gui->Draw();
 }
@@ -39,7 +41,8 @@ void ObjectManager2D::DrawObjectCreator()
     ObjectType2D type;
     if(gui->Creator(type))
     {
-        objectList.push_back(Object2D(type, shaderProgram));
+        VertexArray* vao = ObjectCreator2D::CreateObject(type);
+        objectList.push_back(Object2D(vao, shaderProgram));
     }
 }
 
@@ -49,6 +52,7 @@ void ObjectManager2D::DrawObjectProps()
     if(objectList.size() > 0)
     {
         // refactor
+        int index = objectList.size() - 1;
         gui->FrameItems(&objectList[0].position, &objectList[0].rotation, &objectList[0].scale);
     }
 }

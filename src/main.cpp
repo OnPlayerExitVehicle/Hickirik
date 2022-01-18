@@ -80,7 +80,7 @@ int main()
 {
     glfwInit();
     glfwSetErrorCallback(&error);
-    window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "asd", NULL, NULL);
+    window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Hickirik", NULL, NULL);
     if(window == nullptr)
     {
         std::cout << "err" << std::endl;

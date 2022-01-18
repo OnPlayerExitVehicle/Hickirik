@@ -42,7 +42,7 @@ bool GUI::Creator(ObjectType2D& type)
 
 void GUI::FrameItems(glm::vec2* pos, float* rot, glm::vec2* scale)
 {
-    ImGui::Begin("Object Controls", 0, ImGuiCond_Once);
+    ImGui::Begin("Object Controls");
     ImGui::SliderFloat2("Position", (float*)pos, -1.0f, 1.0f, NULL);
     ImGui::SliderFloat("Rotation", rot, 0.0f, 360.0f, NULL);
     ImGui::SliderFloat2("Scale", (float*)scale, 0.0f, 1.0f, NULL);

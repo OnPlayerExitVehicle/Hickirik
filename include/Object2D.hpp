@@ -5,6 +5,8 @@
 #include <ShaderProgram.hpp>
 #include <GLM/vec2.hpp>
 #include <GLM/mat3x3.hpp>
+#include <vector>
+#include "VertexArray.hpp"
 
 struct ColoredVertex
 {
@@ -16,6 +18,8 @@ struct ColoredVertex
     glm::vec4 color;
 };
 
+typedef std::vector<ColoredVertex> ColoredVertexVector;
+
 enum ObjectType2D
 {
     Triangle, Square, Hexagon
@@ -24,19 +28,19 @@ enum ObjectType2D
 class Object2D
 {
 private:
-    unsigned int vao;
-    int triangleCount;
+    VertexArray* vao;
     Hickirik::Shaders::ShaderProgram* program;
     glm::mat3 transformMatrix;
-
+    /*
     void createHexagon();
     void createSquare();
     void createTriangle();
+    */
 public:
     static void ClearScreen();
     glm::vec2 position;
     glm::vec2 scale;
     float rotation;
-    Object2D(ObjectType2D type, Hickirik::Shaders::ShaderProgram* program = nullptr);
+    Object2D(VertexArray* vao, Hickirik::Shaders::ShaderProgram* program = nullptr);
     void Draw();
 };

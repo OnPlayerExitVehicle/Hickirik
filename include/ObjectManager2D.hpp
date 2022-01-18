@@ -4,6 +4,7 @@
 #include "GUI.hpp"
 #include "ShaderProgram.hpp"
 #include <GLFW/glfw3.h>
+#include "ObjectCreator2D.hpp"
 
 class ObjectManager2D
 {

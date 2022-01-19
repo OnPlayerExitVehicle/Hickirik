@@ -5,7 +5,7 @@
 
 enum ObjectType3D
 {
-
+    Cube, Pyramid
 };
 
 class Object3D
@@ -15,9 +15,9 @@ private:
     Hickirik::Shaders::ShaderProgram* program;
     glm::mat4 transformMatrix;
 
-    static glm::vec3 rightVec;
-    static glm::vec3 upVec;
-    static glm::vec3 frontVec;
+    static const glm::vec3 rightVec;
+    static const glm::vec3 upVec;
+    static const glm::vec3 frontVec;
 
 public:
     static void ClearScreen();

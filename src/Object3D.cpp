@@ -2,9 +2,10 @@
 #include <GLAD/glad.h>
 #include <GLM/gtc/matrix_transform.hpp>
 
-glm::vec3 Object3D::rightVec(1.0f, 0.0f, 0.0f);
-glm::vec3 Object3D::upVec(0.0f, 1.0f, 0.0f);
-glm::vec3 Object3D::frontVec(0.0f, 0.0f, 1.0f);
+
+const glm::vec3 Object3D::rightVec(1.0f, 0.0f, 0.0f);
+const glm::vec3 Object3D::upVec(0.0f, 1.0f, 0.0f);
+const glm::vec3 Object3D::frontVec(0.0f, 0.0f, 1.0f);
 
 
 Object3D::Object3D(VertexArray* vao, Hickirik::Shaders::ShaderProgram* program)
@@ -29,7 +30,9 @@ Object3D::Object3D(VertexArray* vao, Hickirik::Shaders::ShaderProgram* program)
 
 void Object3D::Draw()
 {
-    angles %= 360.0f;
+    angles.x = fmod(angles.x, 360.0f);
+    angles.y = fmod(angles.y, 360.0f);
+    angles.z = fmod(angles.z, 360.0f);
 
     glm::mat4 translationMatrix = glm::translate(glm::mat4(1), position);
     glm::mat4 scalingMatrix     = glm::scale(glm::mat4(1), scale);

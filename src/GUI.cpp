@@ -40,12 +40,40 @@ bool GUI::Creator(ObjectType2D& type)
     return isClicked;
 }
 
+bool GUI::Creator(ObjectType3D& type)
+{
+    ImGui::Begin("Object Creator");
+    bool isClicked = false;
+    if(ImGui::Button("Cube"))
+    {
+        type = ObjectType3D::Cube;
+        isClicked = true;
+    } 
+    else if(ImGui::Button("Pyramid"))
+    {
+        type = ObjectType3D::Pyramid;
+        isClicked = true;
+    }
+
+    ImGui::End();
+    return isClicked;
+}
+
 void GUI::FrameItems(glm::vec2* pos, float* rot, glm::vec2* scale)
 {
     ImGui::Begin("Object Controls");
     ImGui::SliderFloat2("Position", (float*)pos, -1.0f, 1.0f, NULL);
     ImGui::SliderFloat("Rotation", rot, 0.0f, 360.0f, NULL);
     ImGui::SliderFloat2("Scale", (float*)scale, 0.0f, 1.0f, NULL);
+    ImGui::End();
+}
+
+void GUI::FrameItems(glm::vec3* pos, glm::vec3* rot, glm::vec3* scale)
+{
+    ImGui::Begin("Object Controls");
+    ImGui::SliderFloat3("Position", (float*)pos, -1.0f, 1.0f, NULL);
+    ImGui::SliderFloat3("Rotation", (float*)rot, 0.0f, 360.0f, NULL);
+    ImGui::SliderFloat3("Scale", (float*)scale, 0.0f, 1.0f, NULL);
     ImGui::End();
 }
 

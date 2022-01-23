@@ -16,6 +16,16 @@ void ObjectManager3D::Start(Hickirik::Shaders::ShaderProgram* program, GLFWwindo
     shaderProgram->Link();
 }
 
+void ObjectManager3D::Frame()
+{
+    gui->Frame();
+    DrawObjectCreator();
+    DrawObjectProps();
+    DrawObjects();
+    
+    gui->Draw();
+}
+
 void ObjectManager3D::DrawObjects()
 {
     Object3D::ClearScreen();

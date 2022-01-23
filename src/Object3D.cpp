@@ -18,6 +18,7 @@ Object3D::Object3D(VertexArray* vao, Hickirik::Shaders::ShaderProgram* program)
     this->vao = vao;
 
     glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+    glEnable(GL_DEPTH_TEST);
     if(!program)
     {
         this->program = new Hickirik::Shaders::ShaderProgram();
@@ -53,5 +54,5 @@ void Object3D::Draw()
 
 void Object3D::ClearScreen() // refactor
 {
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }

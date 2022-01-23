@@ -12,10 +12,18 @@
 #include "Object2D.hpp"
 #include "GUI.hpp"
 #include "ObjectManager2D.hpp"
+#include "ObjectManager3D.hpp"
 
 #define WINDOW_WIDTH    800
 #define WINDOW_HEIGHT   800
 
+#define THREE_DIMENSION
+
+#ifdef THREE_DIMENSION
+#define ObjectManager ObjectManager3D
+#else
+#define ObjectManager ObjectManager2D
+#endif
 
 int triangleCount;
 GLFWwindow* window;
@@ -32,7 +40,7 @@ void OGL_Start()
     srand(time(NULL));
     //gui = new GUI();
     //objects.push_back(new Object2D(ObjectType2D::Triangle));
-    ObjectManager2D::Start(new Hickirik::Shaders::ShaderProgram(), window);
+    ObjectManager::Start(new Hickirik::Shaders::ShaderProgram(), window);
 }
 
 void OGL_Frame()
@@ -67,7 +75,7 @@ void OGL_Frame()
     
     gui->Draw();
     */
-   ObjectManager2D::Frame();
+   ObjectManager::Frame();
 }
 
 void error(int code, const char* error)

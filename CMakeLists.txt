@@ -21,6 +21,7 @@ set(PROJECT_SOURCES ${PROJECT_SOURCE_DIR}/main.cpp
                     ${PROJECT_SOURCE_DIR}/Object3D.cpp
                     ${PROJECT_SOURCE_DIR}/ObjectManager3D.cpp
                     ${PROJECT_SOURCE_DIR}/ObjectCreator3D.cpp
+                    ${PROJECT_SOURCE_DIR}/Camera.cpp
                     ${IMGUI_SOURCEFILES}
    )
 

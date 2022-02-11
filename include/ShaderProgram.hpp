@@ -12,19 +12,26 @@ namespace Hickirik
         class ShaderProgram
         {
         private:
-            uint m_id;
+            unsigned int m_id;
             int m_shaderIds[PROGRAMMABLE_SHADER_COUNT];
             int m_shaderCount;
-            uint m_transformMatrixId;
+            unsigned int m_transformMatrixId;
+            unsigned int m_viewMatrixId;
+            unsigned int m_projectionMatrixId;
             
-            const std::string matrixName = "transformMatrix";
+            const std::string transformMatrixName   = "transformMatrix";
+            const std::string viewMatrixName        = "viewMatrix";
+            const std::string projectionMatrixName  = "projectionMatrix";
         public:
             ShaderProgram();
-            void AttachShader(const std::string& address, uint type);
+            void AttachShader(const std::string& address, unsigned int type);
             void Link();
             void Use();
             void SendTransformMatrix(const glm::mat3& matrix);
+
             void SendTransformMatrix(const glm::mat4& matrix);
+            void SendViewMatrix(const glm::mat4& matrix);
+            void SendProjectionMatrix(const glm::mat4& matrix);
         };
     }
 }

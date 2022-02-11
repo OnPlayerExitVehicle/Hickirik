@@ -54,6 +54,6 @@ void ObjectManager2D::DrawObjectProps()
     if(activeObject)
     {
         // refactor
-        gui->FrameItems(&activeObject->position, &activeObject->rotation, &activeObject->scale);
+        activeObject->isUpdated = gui->FrameItems(&activeObject->position, &activeObject->rotation, &activeObject->scale);
     }
 }

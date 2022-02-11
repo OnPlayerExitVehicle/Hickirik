@@ -20,11 +20,8 @@ private:
     VertexArray* vao;
     Hickirik::Shaders::ShaderProgram* program;
     glm::mat3 transformMatrix;
-    /*
-    void createHexagon();
-    void createSquare();
-    void createTriangle();
-    */
+    
+    void Update();
 public:
     static void ClearScreen();
     glm::vec2 position;
@@ -32,4 +29,6 @@ public:
     float rotation;
     Object2D(VertexArray* vao, Hickirik::Shaders::ShaderProgram* program = nullptr);
     void Draw();
+
+    bool isUpdated; // refactor
 };

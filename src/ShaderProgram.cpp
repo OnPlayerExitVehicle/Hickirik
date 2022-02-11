@@ -11,7 +11,7 @@ ShaderProgram::ShaderProgram()
     m_shaderCount = 0;
 }
 
-void ShaderProgram::AttachShader(const std::string& address, uint type)
+void ShaderProgram::AttachShader(const std::string& address, unsigned int type)
 {
     std::string strShader;
     std::fstream file(address);
@@ -38,7 +38,9 @@ void ShaderProgram::AttachShader(const std::string& address, uint type)
 void ShaderProgram::Link()
 {
     glLinkProgram(m_id);
-    m_transformMatrixId = glGetUniformLocation(m_id, matrixName.c_str());
+    m_transformMatrixId     = glGetUniformLocation(m_id, transformMatrixName.c_str());
+    m_viewMatrixId          = glGetUniformLocation(m_id, viewMatrixName.c_str());
+    m_projectionMatrixId    = glGetUniformLocation(m_id, projectionMatrixName.c_str());
 }
 
 void ShaderProgram::Use()
@@ -54,4 +56,14 @@ void ShaderProgram::SendTransformMatrix(const glm::mat3& matrix)
 void ShaderProgram::SendTransformMatrix(const glm::mat4& matrix)
 {
     glUniformMatrix4fv(m_transformMatrixId, 1, false, &matrix[0][0]);
+}
+
+void ShaderProgram::SendViewMatrix(const glm::mat4& matrix)
+{
+    glUniformMatrix4fv(m_viewMatrixId, 1, false, &matrix[0][0]);
+}
+
+void ShaderProgram::SendProjectionMatrix(const glm::mat4& matrix)
+{
+    glUniformMatrix4fv(m_projectionMatrixId, 1, false, &matrix[0][0]);
 }

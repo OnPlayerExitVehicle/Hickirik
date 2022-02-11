@@ -4,10 +4,12 @@
 
 Object2D::Object2D(VertexArray* vao, Hickirik::Shaders::ShaderProgram* program)
 {
+    this->isUpdated = true;
+
     position        = glm::vec2(0.0f, 0.0f);
     scale           = glm::vec2(1.0f, 1.0f);
     rotation        = 0.0f;
-    transformMatrix = glm::mat3(1);
+    Update();
 
     this->vao = vao;
 
@@ -38,13 +40,23 @@ Object2D::Object2D(VertexArray* vao, Hickirik::Shaders::ShaderProgram* program)
     */
 }
 
-void Object2D::Draw()
+void Object2D::Update()
 {
     rotation = fmod(rotation, 360.0f);
     glm::mat3 rotationMatrix = glm::rotate(glm::mat3(1), glm::radians(rotation));
     glm::mat3 translationMatrix = glm::translate(glm::mat3(1), position);
     glm::mat3 scalingMatrix = glm::scale(glm::mat3(1), scale);
     transformMatrix = translationMatrix * rotationMatrix * scalingMatrix;
+
+    isUpdated = false;
+}
+
+void Object2D::Draw()
+{
+    if(isUpdated)
+    {
+        Update();
+    }
 
     //glClear(GL_COLOR_BUFFER_BIT);
     program->Use();

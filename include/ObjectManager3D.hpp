@@ -3,6 +3,7 @@
 #include <vector>
 #include "GUI.hpp"
 #include <GLFW/glfw3.h>
+#include "Camera.hpp"
 
 class ObjectManager3D
 {
@@ -14,6 +15,7 @@ private:
     static std::vector<Object3D> objectList;
     static Object3D* activeObject;
     static GUI* gui;
+    static Camera* camera;
     static void DrawObjects();
     static void DrawObjectCreator();
     static void DrawObjectProps();

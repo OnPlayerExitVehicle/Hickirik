@@ -19,6 +19,8 @@ private:
     static const glm::vec3 upVec;
     static const glm::vec3 frontVec;
 
+    void Update();
+
 public:
     static void ClearScreen();
     glm::vec3 position;
@@ -27,4 +29,6 @@ public:
 
     Object3D(VertexArray* vao, Hickirik::Shaders::ShaderProgram* program = nullptr);
     void Draw();
+
+    bool isUpdated; // refactor
 };

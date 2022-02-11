@@ -59,22 +59,24 @@ bool GUI::Creator(ObjectType3D& type)
     return isClicked;
 }
 
-void GUI::FrameItems(glm::vec2* pos, float* rot, glm::vec2* scale)
+bool GUI::FrameItems(glm::vec2* pos, float* rot, glm::vec2* scale)
 {
     ImGui::Begin("Object Controls");
-    ImGui::SliderFloat2("Position", (float*)pos, -1.0f, 1.0f, NULL);
-    ImGui::SliderFloat("Rotation", rot, 0.0f, 360.0f, NULL);
-    ImGui::SliderFloat2("Scale", (float*)scale, 0.0f, 1.0f, NULL);
+    bool a = ImGui::SliderFloat2("Position", (float*)pos, -1.0f, 1.0f, NULL);
+    bool b = ImGui::SliderFloat("Rotation", rot, 0.0f, 360.0f, NULL);
+    bool c = ImGui::SliderFloat2("Scale", (float*)scale, 0.0f, 1.0f, NULL);
     ImGui::End();
+    return a || b || c;
 }
 
-void GUI::FrameItems(glm::vec3* pos, glm::vec3* rot, glm::vec3* scale)
+bool GUI::FrameItems(glm::vec3* pos, glm::vec3* rot, glm::vec3* scale)
 {
     ImGui::Begin("Object Controls");
-    ImGui::SliderFloat3("Position", (float*)pos, -1.0f, 1.0f, NULL);
-    ImGui::SliderFloat3("Rotation", (float*)rot, 0.0f, 360.0f, NULL);
-    ImGui::SliderFloat3("Scale", (float*)scale, 0.0f, 1.0f, NULL);
+    bool a = ImGui::SliderFloat3("Position", (float*)pos, -1.0f, 1.0f, NULL);
+    bool b = ImGui::SliderFloat3("Rotation", (float*)rot, 0.0f, 360.0f, NULL);
+    bool c = ImGui::SliderFloat3("Scale", (float*)scale, 0.0f, 1.0f, NULL);
     ImGui::End();
+    return a || b || c;
 }
 
 void GUI::Draw()

@@ -10,14 +10,16 @@ const glm::vec3 Object3D::frontVec(0.0f, 0.0f, 1.0f);
 
 Object3D::Object3D(VertexArray* vao, Hickirik::Shaders::ShaderProgram* program)
 {
+    this->isUpdated = true;
+
     position        = glm::vec3(0.0f, 0.0f, 0.0f);
     scale           = glm::vec3(1.0f, 1.0f, 1.0f);
     angles          = glm::vec3(0.0f, 0.0f, 0.0f);
-    transformMatrix = glm::mat4(1);
+    Update();
 
     this->vao = vao;
 
-    glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+    
     glEnable(GL_DEPTH_TEST);
     if(!program)
     {
@@ -29,7 +31,7 @@ Object3D::Object3D(VertexArray* vao, Hickirik::Shaders::ShaderProgram* program)
     else this->program = program;
 }
 
-void Object3D::Draw()
+void Object3D::Update()
 {
     angles.x = fmod(angles.x, 360.0f);
     angles.y = fmod(angles.y, 360.0f);
@@ -45,6 +47,15 @@ void Object3D::Draw()
     glm::mat4 rotationMatrix = rotationMatrix_X * rotationMatrix_Y * rotationMatrix_Z;
 
     transformMatrix = translationMatrix * rotationMatrix * scalingMatrix;
+    isUpdated = false;
+}
+
+void Object3D::Draw()
+{
+    if(true || isUpdated)
+    {
+        Update();
+    }
 
     program->Use();
     program->SendTransformMatrix(transformMatrix); //?
@@ -54,5 +65,6 @@ void Object3D::Draw()
 
 void Object3D::ClearScreen() // refactor
 {
+    glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }

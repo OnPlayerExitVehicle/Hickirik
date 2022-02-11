@@ -3,6 +3,7 @@
 
 std::vector<Object3D> ObjectManager3D::objectList;
 GUI* ObjectManager3D::gui;
+Camera* ObjectManager3D::camera;
 Hickirik::Shaders::ShaderProgram* ObjectManager3D::shaderProgram;
 Object3D* ObjectManager3D::activeObject = nullptr;
 
@@ -14,6 +15,7 @@ void ObjectManager3D::Start(Hickirik::Shaders::ShaderProgram* program, GLFWwindo
     shaderProgram->AttachShader("./shaders/3D/vertex.glsl", GL_VERTEX_SHADER);
     shaderProgram->AttachShader("./shaders/3D/fragment.glsl", GL_FRAGMENT_SHADER);
     shaderProgram->Link();
+    camera = new Camera(shaderProgram);
 }
 
 void ObjectManager3D::Frame()
@@ -29,6 +31,7 @@ void ObjectManager3D::Frame()
 void ObjectManager3D::DrawObjects()
 {
     Object3D::ClearScreen();
+    camera->Draw();
     for(Object3D object: objectList)
     {
         object.Draw();
@@ -52,6 +55,6 @@ void ObjectManager3D::DrawObjectProps()
     if(activeObject)
     {
         // refactor
-        gui->FrameItems(&activeObject->position, &activeObject->angles, &activeObject->scale);
+        activeObject->isUpdated = gui->FrameItems(&activeObject->position, &activeObject->angles, &activeObject->scale);
     }
 }

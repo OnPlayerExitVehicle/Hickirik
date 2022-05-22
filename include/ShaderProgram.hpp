@@ -1,6 +1,5 @@
 #pragma once
 
-#include "DefaultDefinitons.hpp"
 #include <fstream>
 #include <GLM/mat3x3.hpp>
 #define PROGRAMMABLE_SHADER_COUNT 5

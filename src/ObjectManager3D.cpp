@@ -12,8 +12,8 @@ void ObjectManager3D::Start(Hickirik::Shaders::ShaderProgram* program, GLFWwindo
     gui = new GUI();
     gui->Init(window);
     shaderProgram = program;
-    shaderProgram->AttachShader("./shaders/3D/vertex.glsl", GL_VERTEX_SHADER);
-    shaderProgram->AttachShader("./shaders/3D/fragment.glsl", GL_FRAGMENT_SHADER);
+    shaderProgram->AttachShader("../shaders/3D/vertex.glsl", GL_VERTEX_SHADER);
+    shaderProgram->AttachShader("../shaders/3D/fragment.glsl", GL_FRAGMENT_SHADER);
     shaderProgram->Link();
     camera = new Camera(shaderProgram);
 }

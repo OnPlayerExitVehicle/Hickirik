@@ -6,7 +6,8 @@ void GUI::Init(GLFWwindow* window)
     ImGui::CreateContext();
     ImGui_ImplGlfw_InitForOpenGL(window,true);
     ImGui_ImplOpenGL3_Init("#version 130");
-    ImGui::StyleColorsClassic();
+    //ImGui::StyleColorsClassic();
+    ImGui::StyleColorsDark();
 }
 
 void GUI::Frame()

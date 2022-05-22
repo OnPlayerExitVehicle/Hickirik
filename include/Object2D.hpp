@@ -18,7 +18,7 @@ class Object2D
 {
 private:
     VertexArray* vao;
-    Hickirik::Shaders::ShaderProgram* program;
+    Hickirik::Shaders::ShaderProgram *program;
     glm::mat3 transformMatrix;
     
     void Update();

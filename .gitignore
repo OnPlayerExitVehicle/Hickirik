@@ -49,6 +49,7 @@ _deps
 .history/
 
 .build/*
+.bin/*
 
 # IMGUI
 
